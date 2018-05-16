@@ -14,8 +14,8 @@ public:
 	InputLayer() ;
 	~InputLayer() ;
 
-	InputLayer& initLayer(InputLayer inputLayer);
-	void printLayer(const InputLayer& inputLayer);
+	InputLayer& initLayer(InputLayer& inputLayer);
+	void printLayer(const InputLayer& inputLayer) const;
 
 private:
 
@@ -29,7 +29,7 @@ InputLayer::~InputLayer()
 {
 }
 
-inline InputLayer& InputLayer::initLayer(InputLayer inputLayer)
+inline InputLayer& InputLayer::initLayer(InputLayer& inputLayer)
 {
 	std::vector<double> listOfWeightInTemp;
 	std::vector<Neuron>listOfNeurons;
@@ -47,16 +47,16 @@ inline InputLayer& InputLayer::initLayer(InputLayer inputLayer)
 	return inputLayer;
 }
 
-inline void InputLayer::printLayer(const InputLayer & inputLayer)
+inline void InputLayer::printLayer(const InputLayer & inputLayer) const
 {
-	std::cout << "### INPUT LAYER ###";
+	std::cout << "### INPUT LAYER ###"<<std::endl;
 	int n = 1;
 	for (Neuron neuron : inputLayer.getListOfNeurons()) {
-		std::cout << "Neuron #" << n << ":";
-		std::cout << "Input Weights:";
+		std::cout << "Neuron #" << n << ":"<<std::endl;
+		std::cout << "Input Weights:"<<std::endl;
 		std::vector<double> weights = neuron.getListOfWeightIn();
 		for (double weight : weights) {
-			std::cout << weight << " ";
+			std::cout << weight << std::endl;
 		}
 		n++;
 	}

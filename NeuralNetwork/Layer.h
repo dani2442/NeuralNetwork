@@ -14,7 +14,7 @@ public:
 	Layer(){}
 	~Layer(){}
 
-	void printLayer() {}
+	void printLayer() const{}
 
 	std::vector<Neuron> getListOfNeurons()const { return listOfNeurons; }
 	void setListOfNeurons(const std::vector<Neuron>& listOfNeurons) { this->listOfNeurons = listOfNeurons; }

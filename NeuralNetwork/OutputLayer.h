@@ -15,7 +15,7 @@ public:
 	~OutputLayer();
 
 	OutputLayer& initLayer(OutputLayer &ouputLayer);
-	void porintLayer(const OutputLayer& outputLayer);
+	void printLayer(const OutputLayer& outputLayer)const;
 private:
 
 };
@@ -47,16 +47,18 @@ inline OutputLayer & OutputLayer::initLayer(OutputLayer & outputLayer)
 	return outputLayer;
 }
 
-inline void OutputLayer::porintLayer(const OutputLayer & outputLayer)
+
+inline void OutputLayer::printLayer(const OutputLayer & outputLayer)const
 {
-	std::cout << "### OUTPUT lAYER ###";
+	std::cout << "### OUTPUT lAYER ###"<<std::endl;
 	int n = 1;
 	for (Neuron neuron : outputLayer.getListOfNeurons()) {
-		std::cout << "Neuron #" << n << ":";
-		std::cout << "Input Weights:";
-		std::vector<double> weights = neuron.getListOfWeightIn();
+		std::cout << "Neuron #" << n << ":"<<std::endl;
+		std::cout << "Input Weights:"<<std::endl;
+		std::vector<double> weights = neuron.getListOfWeightOut();
 		for (double weight : weights) {
 			std::cout << weight << " ";
 		}
 		n++;
+	}
 }

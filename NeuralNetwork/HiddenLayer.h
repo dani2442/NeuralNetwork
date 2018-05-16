@@ -18,7 +18,7 @@ public:
 	~HiddenLayer();
 
 	std::vector<HiddenLayer>& initLayer(const HiddenLayer&, std::vector<HiddenLayer>& ,const InputLayer& ,const OutputLayer& );
-	void printLayer(const std::vector<HiddenLayer>&);
+	void printLayer(const std::vector<HiddenLayer>&)const;
 
 private:
 
@@ -88,25 +88,26 @@ inline std::vector<HiddenLayer>& HiddenLayer::initLayer(
 	return listOfHiddenLayer;
 }
 
-inline void HiddenLayer::printLayer(const std::vector<HiddenLayer>& listOfHiddenLayer)
+inline void HiddenLayer::printLayer(const std::vector<HiddenLayer>& listOfHiddenLayer) const
 {
-	std::cout << "### HIDDEN lAYER ###";
+	std::cout << "### HIDDEN lAYER ###"<<std::endl;
 	int h = 1;
 	for (HiddenLayer hiddenLayer : listOfHiddenLayer) {
-		std::cout << "Hidden Layer #" << h;
-		int n = 0;
+		std::cout << "Hidden Layer #" << h<<std::endl;
+		int n = 1;
 		for (Neuron neuron:hiddenLayer.getListOfNeurons()) {
 			std::cout << "Neuron #"<<n<<std::endl;
-			std::cout << "Inpur Weights:"<<std::endl;
+			std::cout << "Input Weights:"<<std::endl;
 			std::vector<double> weights = neuron.getListOfWeightIn();
 			for (double weight : weights) {
 				std::cout << weight << " ";
 			}
 			std::cout <<std::endl<< "Output weights:"<<std::endl;
-			std::vector<double> weights = neuron.getListOfWeightOut();
+			weights = neuron.getListOfWeightOut();
 			for (double weight : weights) {
 				std::cout << weight << " ";
 			}
+			std::cout << std::endl;
 			n++;
 		}
 		h++;
