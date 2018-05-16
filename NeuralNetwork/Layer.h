@@ -19,7 +19,7 @@ public:
 	std::vector<Neuron> getListOfNeurons()const { return listOfNeurons; }
 	void setListOfNeurons(const std::vector<Neuron>& listOfNeurons) { this->listOfNeurons = listOfNeurons; }
 
-	int getNumberOfNeuronsInLayer() { return numberOfNeuronInLayer; }
+	int getNumberOfNeuronsInLayer() const{ return numberOfNeuronInLayer; }
 	void setNumberOfNeuronsInLayer(int numberOfNeuronInLayer) { this->numberOfNeuronInLayer = numberOfNeuronInLayer; }
 
 private:

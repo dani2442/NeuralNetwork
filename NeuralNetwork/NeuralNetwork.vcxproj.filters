@@ -24,6 +24,15 @@
     <ClInclude Include="InputLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HiddenLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuralNet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeuralNetTest.cpp">

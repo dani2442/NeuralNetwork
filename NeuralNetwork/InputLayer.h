@@ -1,10 +1,10 @@
 #pragma once
 
-#ifndef __Neuron__
+#ifndef __InputLayer__
 #define __InputLayer__
 #endif 
 
-#ifndef __Neuron__
+#ifndef __Layer__
 #include "Layer.h"
 #endif
 
@@ -49,7 +49,7 @@ inline InputLayer& InputLayer::initLayer(InputLayer inputLayer)
 
 inline void InputLayer::printLayer(const InputLayer & inputLayer)
 {
-	std::cout << "### INPUT lAYER ###";
+	std::cout << "### INPUT LAYER ###";
 	int n = 1;
 	for (Neuron neuron : inputLayer.getListOfNeurons()) {
 		std::cout << "Neuron #" << n << ":";

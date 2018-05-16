@@ -115,9 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="HiddenLayer.h" />
     <ClInclude Include="InputLayer.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="NeuralNet.h" />
     <ClInclude Include="Neuron.h" />
+    <ClInclude Include="OutputLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeuralNetTest.cpp" />
