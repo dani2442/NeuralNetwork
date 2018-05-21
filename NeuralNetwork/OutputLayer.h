@@ -1,12 +1,6 @@
 #pragma once
-
-#ifndef __OutputLayer__
-#define __OutputLayer__
-#endif 
-
-#ifndef __Layer__
 #include "Layer.h"
-#endif
+
 
 class OutputLayer : public Layer
 {

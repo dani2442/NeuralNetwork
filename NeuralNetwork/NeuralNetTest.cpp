@@ -1,9 +1,9 @@
-#ifndef __NeuralNet__
 #include "NeuralNet.h"
-#endif
+#include "NeuralNetTest.h"
 
 int main() {
-	NeuralNet n;
-	n.initNet();
-	n.printNet();
+	NeuralNetTest test;
+	test.testPerceptron();
+	test.testAdaline();
+	getchar();
 }

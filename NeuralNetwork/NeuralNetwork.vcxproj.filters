@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\learn">
+      <UniqueIdentifier>{12709985-1a42-40d7-9fd7-41dc64978bb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Neuron.h">
@@ -31,6 +34,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NeuralNet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Adaline.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="Perceptron.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="Training.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuralNetTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,15 +1,8 @@
 #pragma once
-
-#ifndef __HiddenLayer__
-#define __HiddenLayer__
-#endif 
-
-#ifndef __Layer__
 #include "Layer.h"
-#endif
-
 #include "InputLayer.h"
 #include "OutputLayer.h"
+
 
 class HiddenLayer : public Layer
 {
@@ -44,7 +37,7 @@ inline std::vector<HiddenLayer>& HiddenLayer::initLayer(
 
 	size_t numberOfHiddenLayers = listOfHiddenLayer.size();
 
-	for (int i = 0; i < numberOfHiddenLayers; i++) {
+	for (size_t i = 0; i < numberOfHiddenLayers; i++) {
 		for (int j = 0; j < hiddenLayer.getNumberOfNeuronsInLayer(); j++) {
 			Neuron neuron;
 

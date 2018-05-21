@@ -1,12 +1,6 @@
 #pragma once
-
-#ifndef __InputLayer__
-#define __InputLayer__
-#endif 
-
-#ifndef __Layer__
 #include "Layer.h"
-#endif
+
 
 class InputLayer : public Layer
 {
@@ -17,6 +11,7 @@ public:
 	InputLayer& initLayer(InputLayer& inputLayer);
 	void printLayer(const InputLayer& inputLayer) const;
 
+	void setNumberOfNeuronsInLayer(int numberOfNeuronInLayer) { this->numberOfNeuronInLayer = numberOfNeuronInLayer+1; }
 private:
 
 };

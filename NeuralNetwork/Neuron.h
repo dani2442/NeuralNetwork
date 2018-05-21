@@ -1,13 +1,5 @@
 #pragma once
-#ifndef __Neuron__
-	#define __Neuron__
-#endif // !__Neuron__
-
-
-#ifndef _VECTOR_
-	#include <vector>
-#endif 
-
+#include <vector>
 #include <iostream>
 #include <stdlib.h>
 
@@ -20,7 +12,7 @@ public:
 
 	double initNeuron() { return ((double)rand() / (RAND_MAX)); }
 
-	std::vector<double>& getListOfWeightIn() { return listOfWeightIn; }
+	const std::vector<double>& getListOfWeightIn() const{ return listOfWeightIn; }
 	std::vector<double>& getListOfWeightOut(){ return listOfWeightOut; }
 
 	void setListOfWeightIn(const std::vector<double>& listOfWeightIn) { this->listOfWeightIn = listOfWeightIn; }
