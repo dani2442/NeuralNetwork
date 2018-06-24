@@ -9,7 +9,7 @@ public:
 	~InputLayer() ;
 
 	InputLayer& initLayer(InputLayer& inputLayer);
-	void printLayer(const InputLayer& inputLayer) const;
+	void printLayer( InputLayer& inputLayer) ;
 
 	void setNumberOfNeuronsInLayer(int numberOfNeuronInLayer) { this->numberOfNeuronInLayer = numberOfNeuronInLayer+1; }
 private:
@@ -29,7 +29,7 @@ inline InputLayer& InputLayer::initLayer(InputLayer& inputLayer)
 	std::vector<double> listOfWeightInTemp;
 	std::vector<Neuron>listOfNeurons;
 
-	for (int i = 0; i < inputLayer.getNumberOfNeuronsInLayer(); i++) {
+	for (size_t i = 0; i < inputLayer.getNumberOfNeuronsInLayer(); i++) {
 		Neuron neuron;
 		listOfWeightInTemp.push_back(neuron.initNeuron());
 
@@ -42,7 +42,7 @@ inline InputLayer& InputLayer::initLayer(InputLayer& inputLayer)
 	return inputLayer;
 }
 
-inline void InputLayer::printLayer(const InputLayer & inputLayer) const
+inline void InputLayer::printLayer(InputLayer & inputLayer) 
 {
 	std::cout << "### INPUT LAYER ###"<<std::endl;
 	int n = 1;

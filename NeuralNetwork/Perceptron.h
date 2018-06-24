@@ -1,5 +1,4 @@
 #pragma once
-#include "Training.h"
 
 class Perceptron:public Training
 {

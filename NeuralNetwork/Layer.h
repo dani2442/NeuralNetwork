@@ -9,13 +9,16 @@ public:
 
 	void printLayer() const{}
 
-	const std::vector<Neuron>& getListOfNeurons()const { return listOfNeurons; }
-	void setListOfNeurons(const std::vector<Neuron>& listOfNeurons) { this->listOfNeurons = listOfNeurons; }
+	std::vector<Neuron>& getListOfNeurons() { return listOfNeurons; }
+	void setListOfNeurons(const std::vector<Neuron>& listOfNeurons) 
+	{ 
+		this->listOfNeurons = listOfNeurons; 
+	}
 
-	int getNumberOfNeuronsInLayer() const{ return numberOfNeuronInLayer; }
+	size_t getNumberOfNeuronsInLayer() const{ return numberOfNeuronInLayer; }
 	void setNumberOfNeuronsInLayer(int numberOfNeuronInLayer) { this->numberOfNeuronInLayer = numberOfNeuronInLayer; }
 
 protected:
 	std::vector<Neuron> listOfNeurons;
-	int numberOfNeuronInLayer;
+	size_t numberOfNeuronInLayer;
 };

@@ -13,6 +13,7 @@ public:
 	std::vector<HiddenLayer>& initLayer(const HiddenLayer&, std::vector<HiddenLayer>& ,const InputLayer& ,const OutputLayer& );
 	void printLayer(const std::vector<HiddenLayer>&)const;
 
+	void setNumberOfNeuronsInLayer(int numberOfNeuronInLayer) { this->numberOfNeuronInLayer = numberOfNeuronInLayer + 1; }
 private:
 
 };
@@ -38,19 +39,19 @@ inline std::vector<HiddenLayer>& HiddenLayer::initLayer(
 	size_t numberOfHiddenLayers = listOfHiddenLayer.size();
 
 	for (size_t i = 0; i < numberOfHiddenLayers; i++) {
-		for (int j = 0; j < hiddenLayer.getNumberOfNeuronsInLayer(); j++) {
+		for (size_t j = 0; j < hiddenLayer.getNumberOfNeuronsInLayer(); j++) {
 			Neuron neuron;
 
-			int limitIn;
-			int limitOut;
+			size_t limitIn;
+			size_t limitOut;
 
 			if (i == 0) {
 				limitIn = inputLayer.getNumberOfNeuronsInLayer();
 				if (numberOfHiddenLayers > 1) {
 					limitOut = listOfHiddenLayer[i + 1].getNumberOfNeuronsInLayer();
 				}
-				else {
-					limitOut = listOfHiddenLayer[i].getNumberOfNeuronsInLayer();
+				else if(numberOfHiddenLayers==1) {
+					limitOut = outputLayer.getNumberOfNeuronsInLayer();
 				}
 			}
 			else if (i == numberOfHiddenLayers - 1) {
@@ -59,12 +60,17 @@ inline std::vector<HiddenLayer>& HiddenLayer::initLayer(
 			}
 			else {
 				limitIn = listOfHiddenLayer[i - 1].getNumberOfNeuronsInLayer();
-				limitOut = listOfHiddenLayer[i - 1].getNumberOfNeuronsInLayer();
+				limitOut = listOfHiddenLayer[i + 1].getNumberOfNeuronsInLayer();
 			}
-			for (int k = 0; k < limitIn; k++) {
-				listOfWeightIn.push_back(neuron.initNeuron());
+			limitIn--; // Bias is not connected
+			limitOut--; // Bias is not connected
+
+			if (j >= 1) {
+				for (size_t k = 0; k <= limitIn; k++) {
+					listOfWeightIn.push_back(neuron.initNeuron());
+				}
 			}
-			for (int k = 0; k < limitOut; k++) {
+			for (size_t k = 0; k <= limitOut; k++) {
 				listOfWeightOut.push_back(neuron.initNeuron());
 			}
 
@@ -76,6 +82,7 @@ inline std::vector<HiddenLayer>& HiddenLayer::initLayer(
 			listOfWeightOut.clear();
 		}
 		listOfHiddenLayer[i].setListOfNeurons(listOfNeurons);
+		this->setListOfNeurons(listOfNeurons);
 		listOfNeurons.clear();
 	}
 	return listOfHiddenLayer;

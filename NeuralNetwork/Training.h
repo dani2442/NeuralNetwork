@@ -8,13 +8,13 @@ public:
 	~Training();
 
 	NeuralNet& train(NeuralNet&);
-	void printTrainedNetResult(const NeuralNet& trainedNet);
+	void printTrainedNetResult(NeuralNet& trainedNet);
 
 	
 
 private:
 
-	std::vector<Neuron> teachNeuronsOfLayer(int, int, NeuralNet&, double);
+	std::vector<Neuron> teachNeuronsOfLayer(size_t, size_t, NeuralNet&, double);
 	double calcNewWeight(TrainingTypesENUM, double , NeuralNet, double, double, double);
 
 	double fncStep(double n) { return (n >= 0) ? 1.0 : 0.0; }
@@ -26,23 +26,24 @@ private:
 	double derivateFncSigLog(double n) { return n * (1.0 - n); }
 	double derivativeFncHyperTan(double n) { return 1.0 / pow(cosh(n), 2); }
 
-	typedef double(Training::*fptr)(double);
-	fptr activationFnc[4] = {&Training::fncLinear,&Training::fncSigLog,&Training::fncHyperTan, &Training::fncStep };
-	fptr derivateActivationFnc[3] = { &Training::derivateFncLinear,&Training::derivateFncSigLog,&Training::derivativeFncHyperTan };
-
 	int epochs=0;
 	double error=0;
 	double mse=0;
 
+protected:
+	typedef double(Training::*fptr)(double);
+	fptr activationFnc[4] = { &Training::fncLinear,&Training::fncSigLog,&Training::fncHyperTan, &Training::fncStep };
+	fptr derivateActivationFnc[3] = { &Training::derivateFncLinear,&Training::derivateFncSigLog,&Training::derivativeFncHyperTan };
+
 public:
 	// Getters and Setters
-	const int getEpochs()const { return epochs; }
+	 int getEpochs() { return epochs; }
 	void setEpochs(int epochs) { this->epochs = epochs; }
 
-	const double getError()const { return error; }
+	 double getError() { return error; }
 	void setError(double error) { this->error = error; }
 
-	const double getMse() const { return mse; }
+	 double getMse()  { return mse; }
 	void setMse(double mse) { this->mse = mse; }
 };
 
@@ -64,10 +65,10 @@ inline NeuralNet & Training::train(NeuralNet& n)
 		double estimatedOutput = 0.0;
 		double realOutput = 0.0;
 
-		for (int i = 0; i < rows; i++) {
+		for (size_t i = 0; i < rows; i++) {
 			double netValue = 0.0;
 
-			for (int j = 0; j < cols; j++) {
+			for (size_t j = 0; j < cols; j++) {
 				inputWeightIn = n.getInputLayer().getListOfNeurons()[j].getListOfWeightIn();
 				double inputWeight = inputWeightIn[0];
 				netValue = netValue + inputWeight * n.getTrainSet()[i][j];
@@ -91,10 +92,10 @@ inline NeuralNet & Training::train(NeuralNet& n)
 	return n;
 }
 
-inline void Training::printTrainedNetResult(const NeuralNet & trainedNet)
+inline void Training::printTrainedNetResult(NeuralNet & trainedNet)
 {
-	size_t rows = trainedNet.getTrainSet().size();
-	size_t cols = trainedNet.getTrainSet()[0].size();
+	size_t rows = sizeof(trainedNet.getTrainSet())/sizeof(trainedNet.getTrainSet()[0]);
+	size_t cols = sizeof(trainedNet.getTrainSet()[0]) / sizeof(double);
 
 	std::vector<double> inputWeightIn;
 	for (size_t i = 0; i < rows; i++) {
@@ -115,13 +116,13 @@ inline void Training::printTrainedNetResult(const NeuralNet & trainedNet)
 	}
 }
 
-inline std::vector<Neuron> Training::teachNeuronsOfLayer(int numberOfInputNeurons, int line, NeuralNet &n, double netValue)
+inline std::vector<Neuron> Training::teachNeuronsOfLayer(size_t numberOfInputNeurons, size_t line, NeuralNet &n, double netValue)
 {
 	std::vector<Neuron> listOfNeurons;
 	std::vector<double> inputWeightsInNew;
 	std::vector<double> inputWeightsInOld;
 
-	for (int j = 0; j < numberOfInputNeurons; j++) {
+	for (size_t j = 0; j < numberOfInputNeurons; j++) {
 		inputWeightsInOld = n.getInputLayer().getListOfNeurons()[j].getListOfWeightIn();
 		double inputWeightOld = inputWeightsInOld[0];
 

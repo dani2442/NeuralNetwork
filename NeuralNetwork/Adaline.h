@@ -1,5 +1,4 @@
 #pragma once
-#include "Training.h"
 
 class Adaline:public Training
 {

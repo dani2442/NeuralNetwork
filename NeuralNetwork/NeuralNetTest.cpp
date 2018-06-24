@@ -3,7 +3,9 @@
 
 int main() {
 	NeuralNetTest test;
-	test.testPerceptron();
-	test.testAdaline();
+	//test.testPerceptron();
+	//test.testAdaline();
+	//test.testLMA();
+	test.testBackpropagation();
 	getchar();
 }

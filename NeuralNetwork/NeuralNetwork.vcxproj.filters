@@ -16,6 +16,9 @@
     <Filter Include="Header Files\learn">
       <UniqueIdentifier>{12709985-1a42-40d7-9fd7-41dc64978bb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{f4ba7803-f567-4c6d-b211-aa7b12dc87e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Neuron.h">
@@ -50,6 +53,21 @@
     </ClInclude>
     <ClInclude Include="NeuralNetTest.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="IdentityMatrix.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Backpropagation.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="LevenbergMartquardt.h">
+      <Filter>Header Files\learn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

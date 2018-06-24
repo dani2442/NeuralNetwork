@@ -116,16 +116,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Adaline.h" />
+    <ClInclude Include="Backpropagation.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="HiddenLayer.h" />
+    <ClInclude Include="IdentityMatrix.h" />
     <ClInclude Include="InputLayer.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="LevenbergMartquardt.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="NeuralNet.h" />
     <ClInclude Include="NeuralNetTest.h" />
     <ClInclude Include="Neuron.h" />
     <ClInclude Include="OutputLayer.h" />
     <ClInclude Include="Perceptron.h" />
     <ClInclude Include="Training.h" />
+    <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeuralNetTest.cpp" />

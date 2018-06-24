@@ -5,7 +5,8 @@ class NeuralNet;
 #include "OutputLayer.h"
 #include "HiddenLayer.h"
 #include "enum.h"
-
+#include "Matrix.h"
+#include "IdentityMatrix.h"
 
 class NeuralNet
 {
@@ -14,10 +15,10 @@ public:
 	~NeuralNet();
 
 	NeuralNet initNet(int numberOfInputNeurons,int numberOfHiddenLayers,int numberOfNeuronsInHiddenLayer,int numberOfOutputNeurons);
-	NeuralNet& trainNet(NeuralNet& n);
+	NeuralNet trainNet(NeuralNet& n);
 
-	void printNet(const NeuralNet& n) const;
-	void printTrainedNetResult(const NeuralNet& n) const;
+	void printNet( NeuralNet& n) ;
+	void printTrainedNetResult( NeuralNet& n) ;
 	
 private:
 	InputLayer inputLayer;
@@ -28,52 +29,67 @@ private:
 
 	std::vector<std::vector<double>> trainSet;
 	std::vector<double> realOutputSet;
+	std::vector<std::vector<double>> realMatrixOutputSet;
+
 	int maxEpochs;
 	double learningRate;
 	double targetError;
 	double trainingError;
+	double errorMean;
+
 	std::vector<double>listOfMSE;
 	ActivationFncENUM activationFnc;
+	ActivationFncENUM activationFncOutputLayer;
 	TrainingTypesENUM trainType;
 
+
 public:
-	const InputLayer & getInputLayer()const { return inputLayer; }
+	InputLayer & getInputLayer() { return inputLayer; }
 	void setInputLayer(const InputLayer& inputLayer) { this->inputLayer = inputLayer; }
 
-	const HiddenLayer& getHiddenLayer() const { return hiddenLayer; }
+	 HiddenLayer& getHiddenLayer()  { return hiddenLayer; }
 	void setHiddenLayer(const HiddenLayer& hiddenLayer) { this->hiddenLayer = hiddenLayer; }
 
-	const std::vector<HiddenLayer>& getListOfHiddenLayer() const { return listOfHiddenLayer; }
+	 std::vector<HiddenLayer>& getListOfHiddenLayer()  { return listOfHiddenLayer; }
 	void setListOfHiddenLayer(const std::vector<HiddenLayer>& listOfHiddenLayer) { this->listOfHiddenLayer = listOfHiddenLayer; }
 
-	const OutputLayer& getOutputLayer() const { return outputLayer; }
+	 OutputLayer& getOutputLayer()  { return outputLayer; }
 	void setOutputLayer(const OutputLayer& ouputLayer) { this->outputLayer = ouputLayer; }
 
-	const int getNumberOfHiddenLayers()const { return numberOfHiddenLayers; }
+	 int getNumberOfHiddenLayers() { return numberOfHiddenLayers; }
 	void setNumberOfHiddenLayers(const int numberOfHiddenLayers) { this->numberOfHiddenLayers= numberOfHiddenLayers; }
 
-	const std::vector<std::vector<double>>& getTrainSet() const { return trainSet; }
-	void setTrainSet(std::vector<std::vector<double>>& trainSet) { this->trainSet = trainSet; }
+	 std::vector<std::vector<double>>& getTrainSet()  { return trainSet; }
+	void setTrainSet(const std::vector<std::vector<double>>& trainSet) { this->trainSet = trainSet; }
 
-	const std::vector<double> getRealOutputSet() const { return realOutputSet; }
-	void setRealOutputSet(std::vector<double>& realOutputSet) { this->realOutputSet = realOutputSet; }
+	 std::vector<double> getRealOutputSet()  { return realOutputSet; }
+	void setRealOutputSet(const std::vector<double>& realOutputSet) { this->realOutputSet = realOutputSet; }
 
-	const int getMaxEpochs()const { return maxEpochs; }
+	 std::vector<std::vector<double>>& getRealMatrixOutputSet() { return realMatrixOutputSet; }
+	void setRealMatrixOutputSet(const std::vector<std::vector<double>>& realMatrixOutputSet) { this->realMatrixOutputSet = realMatrixOutputSet; }
+
+	 int getMaxEpochs() { return maxEpochs; }
 	void setMaxEpochs(const int maxEpochs) { this->maxEpochs = maxEpochs; }
 
-	const double getTargetError() const { return targetError; }
-	void setTargetError(double targetError) { this->targetError = targetError; }
+	 double getTargetError()  { return targetError; }
+	void setTargetError(const double targetError) { this->targetError = targetError; }
 
-	const double getLearningRate() const { return learningRate; }
-	void setLearningRate(double learningRate) { this->learningRate = learningRate; }
+	 double getLearningRate()  { return learningRate; }
+	void setLearningRate(const double learningRate) { this->learningRate = learningRate; }
 
-	const double getTrainingError() const { return trainingError; }
-	void setTrainingError(double trainingError) { this->trainingError = trainingError; }
+	 double getTrainingError()  { return trainingError; }
+	void setTrainingError(const double trainingError) { this->trainingError = trainingError; }
 
-	const ActivationFncENUM getActivationFnc() const { return activationFnc; }
+	 double getErrorMean() { return errorMean; }
+	void setErrorMean(const double errorMean) { this->errorMean = errorMean; }
+
+	 ActivationFncENUM getActivationFnc()  { return activationFnc; }
 	void setActivationFnc(ActivationFncENUM activationFnc) { this->activationFnc = activationFnc; }
 
-	const TrainingTypesENUM getTrainType() const { return trainType; }
+	 ActivationFncENUM getActivationFncOutputLayer() { return activationFncOutputLayer; }
+	void setActivationFncOutputLayer(const ActivationFncENUM activationFncOutputLayer) { this->activationFncOutputLayer = activationFncOutputLayer; }
+
+	 TrainingTypesENUM getTrainType()  { return trainType; }
 	void setTrainType(const TrainingTypesENUM trainType) { this->trainType = trainType; }
 
 	std::vector<double>& getListOfMSE()  { return listOfMSE; }
@@ -87,7 +103,6 @@ NeuralNet::NeuralNet()
 NeuralNet::~NeuralNet()
 {
 }
-
 
 NeuralNet NeuralNet::initNet(
 	int numberOfInputNeurons, 
@@ -120,10 +135,7 @@ NeuralNet NeuralNet::initNet(
 	return newNet;
 }
 	
-
-
-inline void NeuralNet::printNet(const NeuralNet& n) const
-{
+inline void NeuralNet::printNet( NeuralNet& n) {
 	inputLayer.printLayer(n.getInputLayer());
 	std::cout<<std::endl;
 	hiddenLayer.printLayer(listOfHiddenLayer);
@@ -133,7 +145,10 @@ inline void NeuralNet::printNet(const NeuralNet& n) const
 #include "Training.h"
 #include "Perceptron.h"
 #include "Adaline.h"
-inline void NeuralNet::printTrainedNetResult (const NeuralNet & n)const
+#include "Backpropagation.h"
+#include "LevenbergMartquardt.h"
+
+inline void NeuralNet::printTrainedNetResult (NeuralNet & n)
 {
 	switch (n.trainType) {
 	case TrainingTypesENUM::PERCEPTRON:
@@ -151,20 +166,33 @@ inline void NeuralNet::printTrainedNetResult (const NeuralNet & n)const
 	}
 }
 
-NeuralNet& NeuralNet::trainNet(NeuralNet & n)
+NeuralNet NeuralNet::trainNet(NeuralNet & n)
 {
+	NeuralNet trainedNet;
 	switch (n.trainType) {
 	case TrainingTypesENUM::PERCEPTRON:
 	{
 		Perceptron t;
-		n = t.train(n);
-		return n;
+		trainedNet = t.train(n);
+		return trainedNet;
 	}
 	case TrainingTypesENUM::ADALINE:
 	{
 		Adaline a;
-		n = a.train(n);
-		return n;
+		trainedNet = a.train(n);
+		return trainedNet;
+	}
+	case TrainingTypesENUM::BACKPROPAGATION:
+	{
+		Backpropagation b;
+		trainedNet = b.train(n);
+		return trainedNet;
+	}
+	case TrainingTypesENUM::LEVENBERG_MARQUARDT:
+	{
+		LevenbergMarquardt mq;
+		trainedNet = mq.train(n);
+		return trainedNet;
 	}
 	default:
 	{

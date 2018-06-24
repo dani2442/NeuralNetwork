@@ -9,7 +9,7 @@ public:
 	~OutputLayer();
 
 	OutputLayer& initLayer(OutputLayer &ouputLayer);
-	void printLayer(const OutputLayer& outputLayer)const;
+	void printLayer( OutputLayer& outputLayer);
 private:
 
 };
@@ -27,7 +27,7 @@ inline OutputLayer & OutputLayer::initLayer(OutputLayer & outputLayer)
 	std::vector<double>listOfWeightOutTemp;
 	std::vector<Neuron> listOfNeurons;
 
-	for (int i = 0; i < outputLayer.getNumberOfNeuronsInLayer(); i++) {
+	for (size_t i = 0; i < outputLayer.getNumberOfNeuronsInLayer(); i++) {
 		Neuron neuron;
 
 		listOfWeightOutTemp.push_back(neuron.initNeuron());
@@ -42,7 +42,7 @@ inline OutputLayer & OutputLayer::initLayer(OutputLayer & outputLayer)
 }
 
 
-inline void OutputLayer::printLayer(const OutputLayer & outputLayer)const
+inline void OutputLayer::printLayer(OutputLayer & outputLayer)
 {
 	std::cout << "### OUTPUT lAYER ###"<<std::endl;
 	int n = 1;
@@ -54,5 +54,6 @@ inline void OutputLayer::printLayer(const OutputLayer & outputLayer)const
 			std::cout << weight << " ";
 		}
 		n++;
+		std::cout << std::endl;
 	}
 }
