@@ -163,6 +163,12 @@ inline void NeuralNet::printTrainedNetResult (NeuralNet & n)
 		a.printTrainedNetResult(n);
 		break;
 	}
+	case TrainingTypesENUM::BACKPROPAGATION:
+	{
+		Backpropagation b;
+		b.printTrainedNetResult(n);
+		break;
+	}
 	}
 }
 

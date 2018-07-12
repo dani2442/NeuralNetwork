@@ -10,6 +10,7 @@ public:
 	void testAdaline();
 	void testLMA();
 	void testBackpropagation();
+	void testKohonen();
 
 private:
 
@@ -152,4 +153,26 @@ inline void NeuralNetTest::testBackpropagation()
 	std::cout << std::endl;
 	std::cout << "-------------BACKPROPAGATION TRAINED NET----------------" << std::endl;
 	testNet.printNet(trainedNet);
+}
+
+inline void NeuralNetTest::testKohonen()
+{
+	NeuralNet testNet;
+	testNet = testNet.initNet(2, 0, 0, 2);
+
+	NeuralNet trainedNet;
+	testNet.setTrainSet(std::vector<std::vector<double>>()= { 
+		{ 1.0, -1.0, 1.0 },{ -1.0, -1.0, -1.0 },{ -1.0, -1.0, 1.0 },
+		{ 1.0, 1.0, -1.0 },{ -1.0, 1.0, 1.0 },{ 1.0, -1.0, -1.0 } }
+	);
+	testNet.setValidationSet(std::vector<std::vector<double>>() = { { -1.0, 1.0, -1.0 },{ 1.0, 1.0, 1.0 } });
+	testNet.setMaxEpochs(10);
+	testNet.setLearningRate(0.1);
+	testNet.setTrainType(TrainingTypesENUM::KOHONEN);
+
+	trainedNet = testNet.trainNet(testNet);
+	std::cout << std::endl;
+	std::cout << "-------------KOHONEN VALIDATION NET--------------"<<std::endl;
+	testNet.netValidation(trainedNet);
+
 }

@@ -6,6 +6,8 @@ int main() {
 	//test.testPerceptron();
 	//test.testAdaline();
 	//test.testLMA();
-	test.testBackpropagation();
+	//test.testBackpropagation();
+
+	test.testKohonen();
 	getchar();
 }

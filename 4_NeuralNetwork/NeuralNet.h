@@ -1,12 +1,15 @@
 #pragma once
 
 class NeuralNet;
+#include <iterator>
+#include <list>
 #include "InputLayer.h"
 #include "OutputLayer.h"
 #include "HiddenLayer.h"
 #include "enum.h"
 #include "Matrix.h"
 #include "IdentityMatrix.h"
+#include "Validation.h"
 
 class NeuralNet
 {
@@ -16,6 +19,7 @@ public:
 
 	NeuralNet initNet(int numberOfInputNeurons,int numberOfHiddenLayers,int numberOfNeuronsInHiddenLayer,int numberOfOutputNeurons);
 	NeuralNet trainNet(NeuralNet& n);
+	void netValidation(NeuralNet& n);
 
 	void printNet( NeuralNet& n) ;
 	void printTrainedNetResult( NeuralNet& n) ;
@@ -28,6 +32,7 @@ private:
 	int numberOfHiddenLayers;
 
 	std::vector<std::vector<double>> trainSet;
+	std::vector<std::vector<double>> validationSet;
 	std::vector<double> realOutputSet;
 	std::vector<std::vector<double>> realMatrixOutputSet;
 
@@ -61,6 +66,9 @@ public:
 
 	 std::vector<std::vector<double>>& getTrainSet()  { return trainSet; }
 	void setTrainSet(const std::vector<std::vector<double>>& trainSet) { this->trainSet = trainSet; }
+
+	std::vector<std::vector<double>>& getValidationSet() { return validationSet; }
+	void setValidationSet(const std::vector<std::vector<double>> validationSet) { this->validationSet = validationSet; }
 
 	 std::vector<double> getRealOutputSet()  { return realOutputSet; }
 	void setRealOutputSet(const std::vector<double>& realOutputSet) { this->realOutputSet = realOutputSet; }
@@ -146,6 +154,7 @@ inline void NeuralNet::printNet( NeuralNet& n) {
 #include "Perceptron.h"
 #include "Adaline.h"
 #include "Backpropagation.h"
+#include "Kohonen.h"
 #include "LevenbergMartquardt.h"
 
 inline void NeuralNet::printTrainedNetResult (NeuralNet & n)
@@ -161,6 +170,12 @@ inline void NeuralNet::printTrainedNetResult (NeuralNet & n)
 	{
 		Adaline a;
 		a.printTrainedNetResult(n);
+		break;
+	}
+	case TrainingTypesENUM::BACKPROPAGATION:
+	{
+		Backpropagation b;
+		b.printTrainedNetResult(n);
 		break;
 	}
 	}
@@ -194,10 +209,33 @@ NeuralNet NeuralNet::trainNet(NeuralNet & n)
 		trainedNet = mq.train(n);
 		return trainedNet;
 	}
+	case TrainingTypesENUM::KOHONEN:
+	{
+		Kohonen k;
+		trainedNet = k.train(n);
+		return trainedNet;
+	}
 	default:
 	{
 		std::cout << "Error return---NeuralNet::trainNet()" << std::endl;
 		return n;
+	}
+	}
+}
+
+inline void NeuralNet::netValidation(NeuralNet & n)
+{
+	switch (n.trainType) {
+	case TrainingTypesENUM::KOHONEN:
+	{
+		Kohonen k;
+		k.netValidation(n);
+		break;
+	}
+	default:
+	{
+		std::cout << n.trainType << " does not exist in TrainingTypesENUM" << std::endl;
+		break;
 	}
 	}
 }

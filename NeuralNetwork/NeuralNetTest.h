@@ -153,3 +153,4 @@ inline void NeuralNetTest::testBackpropagation()
 	std::cout << "-------------BACKPROPAGATION TRAINED NET----------------" << std::endl;
 	testNet.printNet(trainedNet);
 }
+

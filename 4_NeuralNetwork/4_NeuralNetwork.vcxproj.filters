@@ -19,6 +19,12 @@
     <Filter Include="Header Files\util">
       <UniqueIdentifier>{c2369fb0-9f29-42e6-9249-73cca6bcbc72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\som">
+      <UniqueIdentifier>{1e0dc6b0-16ff-4478-a7e5-a87354bfe98e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\validation">
+      <UniqueIdentifier>{2477a6c7-95cb-4cb0-9c62-2b75672b3608}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeuralNetTest.cpp">
@@ -73,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="OutputLayer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kohonen.h">
+      <Filter>Header Files\som</Filter>
+    </ClInclude>
+    <ClInclude Include="Validation.h">
+      <Filter>Header Files\validation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

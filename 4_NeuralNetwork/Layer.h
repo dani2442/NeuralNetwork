@@ -7,7 +7,7 @@ public:
 	Layer(){}
 	~Layer(){}
 
-	void printLayer() const{}
+	void printLayer() {}
 
 	std::vector<Neuron>& getListOfNeurons() { return listOfNeurons; }
 	void setListOfNeurons(const std::vector<Neuron>& listOfNeurons) 
