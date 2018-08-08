@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\som">
+      <UniqueIdentifier>{0e28b978-6a98-4a8c-9306-07dcaf04054a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{1576c21d-82cf-4780-bf17-9d89ee72bec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\validation">
+      <UniqueIdentifier>{00292647-a8e0-466d-8056-90caea715275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\learn">
+      <UniqueIdentifier>{d302dca2-3aba-4371-84e8-62496f25ae18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\weather">
+      <UniqueIdentifier>{5c3ce0d4-2f86-4bcc-88f3-48ac5d986f3e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HiddenLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuralNet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuralNetTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Neuron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Adaline.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="Backpropagation.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="Perceptron.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="Training.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="Kohonen.h">
+      <Filter>Header Files\som</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="IdentityMatrix.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Validation.h">
+      <Filter>Header Files\validation</Filter>
+    </ClInclude>
+    <ClInclude Include="LevenbergMartquardt.h">
+      <Filter>Header Files\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="Chart.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Weather.h">
+      <Filter>Header Files\weather</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NeuralNetTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

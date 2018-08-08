@@ -1,0 +1,6 @@
+#pragma once
+
+enum TrainingTypesENUM { PERCEPTRON, ADALINE,BACKPROPAGATION,LEVENBERG_MARQUARDT,KOHONEN };
+enum ActivationFncENUM { LINEAR = 0, SIGLOG = 1, HYPERTAN = 2, STEP = 3, };
+enum ChartPlotTypeENUM { FULL_DATA, COMPARISON };
+enum NormalizationTypesENUM { MAX_MIN, MAX_MIN_EQUALIZED };
