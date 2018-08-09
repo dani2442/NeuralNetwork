@@ -36,6 +36,7 @@ inline NeuralNet & Backpropagation::train(NeuralNet & n)
 			sumErrors = sumErrors + n.getErrorMean();
 		}
 		setMse(sumErrors / rows);
+		n.getListOfMSE().push_back(getMse());
 		epoch++;
 	}
 	std::cout << getMse()<<std::endl;

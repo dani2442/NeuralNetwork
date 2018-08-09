@@ -96,6 +96,9 @@
     <ClInclude Include="Weather.h">
       <Filter>Header Files\weather</Filter>
     </ClInclude>
+    <ClInclude Include="infix_iterator.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeuralNetTest.cpp">

@@ -1,3 +1,5 @@
+#include <time.h>
+
 #include "NeuralNet.h"
 #include "NeuralNetTest.h"
 #include "Weather.h"

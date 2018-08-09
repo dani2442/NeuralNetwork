@@ -2,6 +2,7 @@
 #include "Data.h"
 #include "enum.h"
 #include "NeuralNet.h"
+#include "Chart.h"
 
 class Weather
 {
@@ -43,7 +44,7 @@ Weather::Weather()
 
 	n1.setMaxEpochs(1000);
 	n1.setTargetError(0.00001);
-	n1.setLearningRate(0.5);
+	n1.setLearningRate(0.25);
 	n1.setTrainType(TrainingTypesENUM::BACKPROPAGATION);
 	n1.setActivationFnc(ActivationFncENUM::SIGLOG);
 	n1.setActivationFncOutputLayer(ActivationFncENUM::LINEAR);
@@ -55,6 +56,7 @@ Weather::Weather()
 	// ERROR:
 	//Chart c1;
 	//c1.plotXYData(n1.getListOfMSE().toArray(),"MSE Error","Epochs","MSE Value");
+	Chart::plotXData(n1.getListOfMSE(), "MSE Error", "MSEValue", "Epochs");
 
 	// TRAINING:
 	std::vector<std::vector<double>> matrixOuputRNA = n1Trained.getNetOutputValues(n1Trained);
@@ -69,6 +71,7 @@ Weather::Weather()
 
 	//Chart c2;
 	//c2.plotXYData(matrixOuputsJoined,"Real x Estimated - Trainig Data","Temperature (Celsius)",ChartPlotTypeENUM::COMPARISON);
+	Chart::plotXYData(matrixOuputsJoined, "Real x Estimated - Trainig Data","Weather Data", "Temperature (Celsius)");
 
 	//TEST:
 	n1Trained.setTrainSet(matrixInputTestRNANorm);
@@ -86,7 +89,7 @@ Weather::Weather()
 	delete temp;
 	//Chart c3;
 	//c3.plotXYData(matrixOuputsJoinedTest, "Real x Eestimated - Test Data", "Wather Data", "Temperature (Celsius)", ChartPlotTypeENUM::COMPARISON);
-
+	Chart::plotXYData(matrixOuputsJoinedTest, "Real x Estimated - Test Data","Weather Data","Temperature (Celsius)");
 }
 
 Weather::~Weather()
